@@ -17,4 +17,19 @@ const verifyToken = (req, res, next) => {
 	}
 }
 
-module.exports = { verifyToken }
+const verifyVendor = (req, res, next) => {
+	if (req.user && req.user.role === 'Vendor') {
+		next()
+	} else {
+		return res.status(403).json({ message: 'Access Denied: Vendor privileges required.' })
+	}
+}
+const verifyAdmin = (req, res, next) => {
+	if (req.user && req.user.role === 'Admin') {
+		next()
+	} else {
+		return res.status(403).json({ message: 'Access Denied: Vendor privileges required.' })
+	}
+}
+
+module.exports = { verifyToken, verifyVendor, verifyAdmin }

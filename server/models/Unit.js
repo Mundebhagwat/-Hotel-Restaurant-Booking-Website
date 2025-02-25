@@ -1,3 +1,5 @@
+const mongoose = require('mongoose')
+
 const unitSchema = new mongoose.Schema(
 	{
 		listingId: { type: mongoose.Schema.Types.ObjectId, ref: 'Listing', required: true },
